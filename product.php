@@ -16,6 +16,7 @@
                     <td class="text-white">ชื่อสินค้า</td>
                     <td class="text-white">จำนวน</td>
                     <td class="text-white">ราคา</td>
+                    <td class="text-white">การจัดการ</td>
                 </tr>
                 <?php
                     $i=1;
@@ -29,6 +30,10 @@
                     <td><?php echo $row['pro_name']?></td>
                     <td><?php echo $row['amount']?></td>
                     <td><?php echo $row['price']?></td>
+                    <td>
+                        <a href="edit_pro.php?pro_id=<?php echo $row['pro_id']?>" class="btn btn-success">แก้ไข</a>
+                        <a href="del_pro.php?pro_id=<?php echo $row['pro_id']?>" class="btn btn-danger" onclick="return confirm('คุณต้องการลบใช่ไหม?')">ลบ</a>
+                    </td>
                 </tr>
                 <?php
                     $i++; 
