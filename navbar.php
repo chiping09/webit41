@@ -1,3 +1,10 @@
+<?php
+  require_once 'config.php';
+  session_start();
+  $session_id=$_SESSION['emp_id'];
+  $old_data=mysqli_fetch_array($con->query("SELECT * FROM employee WHERE emp_id='$session_id'"));
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +32,14 @@
         <li class="nav-item">
             <a class="nav-link" href="add_product.php">การจัดการสินค้า</a>
         </li>
+      </ul>
+      <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="nav-link" href=""><?php echo $old_data['emp_name']?></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link btn btn-success" href="logout.php">Logout</a>
+          </li>
       </ul>
     </div>
   </div>

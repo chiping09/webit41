@@ -13,6 +13,7 @@
                 <tr class="bg-info">
                     <td class="text-white">ลำดำที่</td>
                     <td class="text-white">รหัสพนักงาน</td>
+                    <td class="text-white">username</td>
                     <td class="text-white">ชื่อพนักงาน</td>
                     <td class="text-white">เบอร์โทรศัพท์</td>
                     <td class="text-white">อีเมล</td>
@@ -27,6 +28,7 @@
                 <tr>
                     <td><?php echo $i ?></td>
                     <td><?php echo $row['emp_id']?></td>
+                    <td><?php echo $row['username']?></td>
                     <td><?php echo $row['emp_name']?></td>
                     <td><?php echo $row['telephone']?></td>
                     <td><?php echo $row['email']?></td>

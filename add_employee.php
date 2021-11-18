@@ -3,18 +3,32 @@
     require_once 'config.php';
     if(isset($_POST['submit'])){
         $emp_id=$_POST['emp_id'];
+        $username=$_POST['username'];
+        $password=$_POST['password'];
         $emp_name=$_POST['emp_name'];
         $telephone=$_POST['telephone'];
         $email=$_POST['email'];
-        if($emp_id=='' || $emp_name=='' || $telephone==''|| $email==''){
+        if($emp_id=='' || $emp_name=='' || $username==''|| $password==''|| $telephone==''|| $email==''){
             echo "<script>alert('คุณยังไม่ได้กรอกข้อมูล')</script>";
         }else{
-            $sql="INSERT INTO employee VALUES('$emp_id','$emp_name','$telephone','$email')";
-            $result=$con->query($sql);
-            if(!$result){
-                echo "<script>alert('ERROR: ไม่สารารถเพิ่มข้อมูลได้ กรุณาตรวจสอบขอผิดพลาด')</script>";
+            $old_data=mysqli_fetch_array($con->query("SELECT * FROM employee"));
+            if ($old_data['emp_name']==$emp_name){
+                echo "<script>alert('ชื่อพนักงานนี่มีอยู่แล้ว')</script>";
+            }elseif($old_data['telephone']==$telephone){
+                echo "<script>alert('เบอร์โทรศัพท์นี่มีอยู่แล้ว')</script>";
+            }elseif($old_data['email']==$email){
+                echo "<script>alert('email นี่มีอยู่แล้ว')</script>";
+            }elseif($old_data['username']==$username){
+                echo "<script>alert('username นี่มีอยู่แล้ว')</script>";
             }else{
-                echo "<script>window.location.href='employee.php'</script>";
+                //$safe_pass=md5($password);
+                $sql="INSERT INTO employee VALUES('$emp_id','$username','$password','$emp_name','$telephone','$email')";
+                $result=$con->query($sql);
+                if(!$result){
+                    echo "<script>alert('ERROR: ไม่สารารถเพิ่มข้อมูลได้ กรุณาตรวจสอบขอผิดพลาด')</script>";
+                }else{
+                    echo "<script>window.location.href='employee.php'</script>";
+                }
             }
         }
     }
@@ -35,6 +49,14 @@
                         <div class="mb-3">
                             <label for=""class="form-label">รหัสพนักงาน</label>
                             <input type="text" class="form-control" name="emp_id">
+                        </div>
+                        <div class="mb-3">
+                            <label for=""class="form-label">username</label>
+                            <input type="text" class="form-control" name="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for=""class="form-label">password</label>
+                            <input type="password" class="form-control" name="password">
                         </div>
                         <div class="mb-3">
                             <label for=""class="form-label">ชื่อพนักงาน</label>

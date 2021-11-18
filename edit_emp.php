@@ -5,15 +5,18 @@
     $old_data=mysqli_fetch_array($con->query("SELECT * FROM employee WHERE emp_id='$selected_id'"));
     if(isset($_POST['submit'])){
         $emp_id=$_POST['emp_id'];
+        $username=$_POST['username'];
+        $password=$_POST['password'];
         $emp_name=$_POST['emp_name'];
         $telephone=$_POST['telephone'];
         $email=$_POST['email'];
-        $upd_data=$con->query("UPDATE employee SET emp_id='$emp_id',emp_name='$emp_name',telephone='$telephone',email='$email' WHERE emp_id='$selected_id'");
+        //$safe_pass=md5($password);
+        $upd_data=$con->query("UPDATE employee SET emp_id='$emp_id',username='$username',password='$password',emp_name='$emp_name',telephone='$telephone',email='$email' WHERE emp_id='$selected_id'");
         if(!$upd_data){
-            /*echo "<script>
+            echo "<script>
                     alert('ไม่สามารถแก้ไขข้อมูลได้');
                     window.history.back();
-                  </script>";*/
+                  </script>";
         }else{
             header('location:employee.php');
             //echo "<scritp>window.location.href='employee.php';</scritp>";
@@ -29,6 +32,14 @@
                         <div class="mb-3">
                             <label for=""class="form-label">รหัสพนักงาน</label>
                             <input type="text" class="form-control" name="emp_id" value="<?php echo $old_data['emp_id']?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for=""class="form-label">username</label>
+                            <input type="text" class="form-control" name="username" value="<?php echo $old_data['username']?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for=""class="form-label">password</label>
+                            <input type="password" class="form-control" name="password" value="<?php echo $old_data['password']?>">
                         </div>
                         <div class="mb-3">
                             <label for=""class="form-label">ชื่อพนักงาน</label>
