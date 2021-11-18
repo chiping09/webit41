@@ -23,7 +23,7 @@
 ?>
 <div class="container w-25 mt-5">
             <div class="card">
-                <div class="card-header bg-primary text-white">เพิ่มข้อมูลพนักงาน</div>
+                <div class="card-header bg-primary text-white">ข้อมูลสินค้า</div>
                 <div class="card-body">
                     <form action="<?php $_SERVER['PHP_SELF']?>" method="POST">
                         <div class="mb-3">
