@@ -1,7 +1,7 @@
 <?php
     include 'navbar.php';
     require_once 'config.php';
-    $sql="SELECT * FROM employee order by emp_id DESC";
+    $sql="SELECT * FROM employee order by emp_id ASC";
     $result = $con->query($sql);
 ?>
 <div class="container w-50 mt-5">
