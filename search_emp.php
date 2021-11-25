@@ -1,25 +1,16 @@
 <?php
     include 'navbar.php';
     require_once 'config.php';
-    $sql="SELECT * FROM employee order by emp_id ASC";
-    $result = $con->query($sql);
+    $keyword=$_POST['keyword'];
+    $sql="SELECT * FROM employee WHERE emp_id like '%$keyword%' OR emp_name like '%$keyword%'";
+    $result=$con->query($sql);
 ?>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div class="container w-60 mt-5">
     <div class="row d-flex justify-content-between">
         <div class="col-auto">
         <a href="add_employee.php" class="btn btn-success mb-3">+เพิ่มข้อมูล</a>
         </div>
-        <div class="col-auto">
-            <form action="search_emp.php" class="row" method="post">
-                <div class="col-auto">
-                    <input type="text" class="from-control" name="keyword" placeholder="ใส่รหัสหรือชื่อพนักงาน">
-                </div>
-                <div class="col-auto">
-                    <button type="submit" name="search" class="btn btn-success">ค้นหา</button>
-                </div>
-            </form>
-        </div>
+    </div>
     <div class="card">
         <div class="card-header bg-primary text-white">ข้อมูลพนักงาน</div>
         <div class="card-body">

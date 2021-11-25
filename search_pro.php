@@ -1,10 +1,10 @@
 <?php
     include 'navbar.php';
     require_once 'config.php';
-    $sql="SELECT * FROM product order by pro_id DESC";
-    $result = $con->query($sql);
+    $keyword=$_POST['keyword'];
+    $sql="SELECT * FROM product WHERE pro_id like '%$keyword%' OR pro_name like '%$keyword%'";
+    $result=$con->query($sql);
 ?>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div class="container w-50 mt-5">
     <div class="row d-flex justify-content-between">
         <div class="col-auto">
